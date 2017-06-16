@@ -1,5 +1,6 @@
 bin
 .gradle
+.build
 .settings
 .vscode
 .classpath
