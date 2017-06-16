@@ -1,20 +1,27 @@
 package oraMessaging.controllers;
 
-import java.util.concurrent.atomic.AtomicLong;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 import oraMessaging.models.*;
+import oraMessaging.services.*;
 
 @RestController
 public class ChatController {
+  @Autowired
+  private ChatRepo chatRepo;
 
-    private static final String template = "Hello, %s!";
-    private final AtomicLong counter = new AtomicLong();
+    @RequestMapping(path = "/chat/{id}", method = RequestMethod.GET)
+    public Chat chat(@PathVariable("id") long id) {
+        return chatRepo.findOne(id);
+    }
 
-    @RequestMapping("/chat")
-    public Chat chat(@RequestParam(value="name", defaultValue="World") String name) {
-        return new Chat(counter.incrementAndGet(),
-                            String.format(template, name));
+    @RequestMapping(path="/chats", method=RequestMethod.GET)
+    public Iterable<Chat> getChats(){
+      return chatRepo.findAll();
+    }
+
+    @RequestMapping(path="/chat", method=RequestMethod.POST)
+    public Chat saveChat(@RequestBody Chat chat){
+      return chatRepo.save(chat);
     }
 }
