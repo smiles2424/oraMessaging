@@ -1,7 +1,14 @@
-package oraMessaging.models;
+package oramessaging.models;
 
 import java.util.Date;
-import javax.persistence.*;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+import oramessaging.helpers.DateFormatter;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 @Entity
 public class Chat {
@@ -10,6 +17,7 @@ public class Chat {
   private long id;
   private String content;
   private Date date;
+
 
   protected Chat() {
     this.date = new Date();
@@ -23,8 +31,8 @@ public class Chat {
     return this.content;
   }
 
-  public Date getDate() {
-    return this.date;
+  public String getDate() {
+    return DateFormatter.formatDateToIso(this.date);
   }
 
   @Override

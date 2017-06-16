@@ -1,9 +1,9 @@
-package oraMessaging.controllers;
+package oramessaging.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import oraMessaging.models.*;
-import oraMessaging.services.*;
+import oramessaging.models.*;
+import oramessaging.services.*;
 
 @RestController
 public class ChatController {

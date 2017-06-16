@@ -1,8 +1,8 @@
-package oraMessaging.services;
+package oramessaging.services;
 
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
-import oraMessaging.models.Chat;
+import oramessaging.models.Chat;
 
 public interface ChatRepo extends CrudRepository<Chat, Long> {
 
