@@ -1,0 +1,7 @@
+This is the initial Spring project with gradle. Time to get the rust off and get
+to work. 
+
+
+To start the application
+``` gradle bootRun 
+```
