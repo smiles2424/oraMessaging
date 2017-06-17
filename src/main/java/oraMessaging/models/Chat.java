@@ -21,6 +21,7 @@ public class Chat {
 
   protected Chat() {
     this.date = new Date();
+    System.out.println("New chat message adde!!!!");
   }
 
   public long getId() {

@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MessageApplication {
 
     public static void main(String[] args) {
+        System.out.println("---------------ITS BEGUN------------");
         SpringApplication.run(MessageApplication.class, args);
     }
 }
