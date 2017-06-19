@@ -8,6 +8,10 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import oramessaging.helpers.PasswordMatches;
 
 @Entity
@@ -25,9 +29,11 @@ public class User {
   private String name;
   @NotNull
   @NotEmpty
+  @JsonProperty(access = Access.WRITE_ONLY)
   private String password;
   @NotNull
   @NotEmpty
+  @JsonProperty(access = Access.WRITE_ONLY)
   private String confirmedPassword;
 
   protected User() {  }

@@ -9,6 +9,7 @@ import oramessaging.models.User;
 public interface UserRepo extends CrudRepository<User, Long> {
 
     // List<User> findById(long id);
-    <U extends User> U save(U entity);
+    // <U extends User> U save(U entity);
+    List<User> findByEmail(String email);
     
 }
