@@ -1,6 +1,5 @@
 package oramessaging.models;
 
-import oramessaging.models.*;
 
 public class Metadata {
   private Pager pagination;
