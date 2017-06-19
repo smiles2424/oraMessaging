@@ -1,6 +1,7 @@
 This is my entry for the Ora coding challenge. It was fun to learn all the new features of the
-modern Spring stack with gradle. This project using a number of Spring boot tools
-to speed things up a bit. 
+modern Spring stack with gradle. This project is using a number of Spring boot tools
+to speed things up a bit. There are still a bunch of improvements to be made, but this is well 
+on its way to becoming a full Chat API.
 
 JWT assistance https://auth0.com/blog/securing-spring-boot-with-jwts/
 
