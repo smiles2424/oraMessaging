@@ -28,7 +28,7 @@ public class User {
   private String name;
   @NotNull
   @NotEmpty
-  // @JsonProperty(access = Access.WRITE_ONLY)
+  @JsonProperty(access = Access.WRITE_ONLY)
   private String password;
   @NotNull
   @NotEmpty

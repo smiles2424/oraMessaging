@@ -6,8 +6,11 @@ public class Pager {
   private int pageCount;
   private int totalCount;
 
-  public Pager(int current){
+  public Pager(int current, int perPage, int pageCount, int totalCount){
     this.current = current;
+    this.perPage = perPage;
+    this.pageCount = pageCount;
+    this.totalCount = totalCount;
   }
 
   public int getCurrent() {
