@@ -1,8 +1,8 @@
 package oramessaging.services;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import oramessaging.models.Chat;
 
-public interface ChatRepo extends CrudRepository<Chat, Long> {
+public interface ChatRepo extends PagingAndSortingRepository<Chat, Long> {
 
 }
