@@ -10,6 +10,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+
 import oramessaging.models.Error;
 import oramessaging.models.Response;
 import oramessaging.models.User;
@@ -56,6 +60,10 @@ public class UserController {
       User u = null;
       String message = "Success";
       try {
+        PasswordEncoder e = new BCryptPasswordEncoder();
+        String s = e.encode(user.getPassword());
+        user.setPassword(s);
+        user.setConfirmedPassword(s);
         u = userRepo.save(user);
       } catch (ConstraintViolationException e) {
         message = "Validation failed";

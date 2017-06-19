@@ -29,7 +29,7 @@ public class User {
   private String name;
   @NotNull
   @NotEmpty
-  @JsonProperty(access = Access.WRITE_ONLY)
+  // @JsonProperty(access = Access.WRITE_ONLY)
   private String password;
   @NotNull
   @NotEmpty
@@ -56,6 +56,14 @@ public class User {
 
   public String getConfirmedPassword() {
     return this.confirmedPassword;
+  }
+
+  public void setPassword(String pass) {
+    this.password = pass;
+  }
+
+  public void setConfirmedPassword(String pass) {
+    this.confirmedPassword = pass;
   }
 
   @Override
