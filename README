@@ -1,6 +1,8 @@
 This is the initial Spring project with gradle. Time to get the rust off and get
 to work. 
 
+JWT assistance https://auth0.com/blog/securing-spring-boot-with-jwts/
+
 
 To start the application
 ``` 
