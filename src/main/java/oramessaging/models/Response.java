@@ -1,10 +1,5 @@
 package oramessaging.models;
 
-import java.io.Serializable;
-
-import oramessaging.models.*;
-
-
 public class Response<T> {
   private T data;
   private String message;
