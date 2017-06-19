@@ -1,8 +1,15 @@
 package oramessaging.controllers;
 
+import java.util.ArrayList;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import oramessaging.models.Error;
+import oramessaging.models.Response;
 import oramessaging.models.User;
 import oramessaging.services.UserRepo;
 
@@ -22,8 +29,29 @@ public class UserController {
     }
 
     @RequestMapping(path="/user", method=RequestMethod.POST)
-    public User saveuser(@RequestBody User user){
-      System.out.println("User was saved!");
-      return userRepo.save(user);
+    public Response<User> saveUser(@RequestBody User user){
+
+      // Create error collection for validation exceptions
+      // TODO custom validation, shouldn't use exceptions for expected behavior
+      // TODO move to service layer
+      ArrayList<Error> errors = new ArrayList<Error>();
+      User u = null;
+      String message = "Success";
+      try {
+        u = userRepo.save(user);
+      } catch (ConstraintViolationException e) {
+        message = "Validation failed";
+        for(ConstraintViolation v : e.getConstraintViolations()){
+          Error error = new Error(
+              v.getPropertyPath() + " " + v.getMessage()
+            );
+          errors.add(error);
+        }
+      }
+      
+      Response<User> res = new Response<User>(u);
+      res.setMessage(message);
+      res.setErrors(errors);
+      return res;
     }
 }
