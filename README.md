@@ -12,10 +12,14 @@ JWT assistance https://auth0.com/blog/securing-spring-boot-with-jwts/
 To run the application locally, you will need to have gradle installed and 
 nothing running on port 8080.
 
-1. Install gradle https://gradle.org/install
+1. Install gradle https://gradle.org/install and make sure it is added to your system's Path
+2. Open up a command prompt and navigate to folder you would like to download the project into.
 2. `git clone https://github.com/smiles2424/oraMessaging.git`
+3. `cd ./oraMessaging`
 3. Run `gradle bootRun`
 4. localhost:8080 will be listening for requests
+
+Fire up Postman or the ole `curl` and start hammmering away.
 
 I set up a user created on application start for testing. 
 U: samuel
