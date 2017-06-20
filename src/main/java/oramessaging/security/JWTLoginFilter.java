@@ -18,6 +18,11 @@ import java.util.Collections;
 import oramessaging.models.Login;
 import oramessaging.security.AuthTokenService;
 
+/**
+ * Filter run on the authentication endpoint to handle user logins and assigning
+ * JWT tokens on successful logins.
+ */
+
 public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 
   public JWTLoginFilter(String url, AuthenticationManager authManager) {

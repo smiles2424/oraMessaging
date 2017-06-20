@@ -1,7 +1,8 @@
 package oramessaging.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
+/**
+ * Data structure to match desired JSON outputs
+ */
 public class Metadata {
   private Pager pagination;
 

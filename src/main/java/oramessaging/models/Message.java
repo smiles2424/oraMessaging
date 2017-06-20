@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
 
 import oramessaging.helpers.DateFormatter;
 
@@ -11,15 +13,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 @Entity
-public class Chat {
+public class Message {
   @Id
   @GeneratedValue(strategy=GenerationType.AUTO)
   private long id;
+  @NotNull
   private String content;
   private Date date;
 
 
-  protected Chat() {
+  protected Message() {
     this.date = new Date();
   }
 
@@ -38,7 +41,7 @@ public class Chat {
   @Override
   public String toString() {
     return String.format(
-      "Chat[id=%d, content='%s', date=%d]", 
+      "Message[id=%d, content='%s', date=%d]", 
       this.id, 
       this.content, 
       this.date);

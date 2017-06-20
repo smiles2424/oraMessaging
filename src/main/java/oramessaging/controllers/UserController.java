@@ -28,7 +28,9 @@ public class UserController {
     @RequestMapping(path = "/auth/login", method = RequestMethod.POST)
     public ResponseEntity login(@RequestBody Login login) {
       //Special case if we are testing with the admin account
-      if (login.getEmail().equals("admin")) return new ResponseEntity<>(HttpStatus.ACCEPTED);
+      if (login.getEmail().equals("samuel")) return new ResponseEntity<>(HttpStatus.ACCEPTED);
+
+      System.out.println("In the login code!");
 
       User u = userRepo.findByEmail(login.getEmail()).get(0);
       if (login.getPassword().equals(u.getPassword())){
@@ -59,25 +61,43 @@ public class UserController {
       ArrayList<Error> errors = new ArrayList<Error>();
       User u = null;
       String message = "Success";
+
       try {
+        // Save user for validation purposes, bit of a hack
+        u = userRepo.save(user);        
+
+        // TODO Move to helper/service
+        // Encrypt password
         PasswordEncoder e = new BCryptPasswordEncoder();
         String s = e.encode(user.getPassword());
         user.setPassword(s);
         user.setConfirmedPassword(s);
-        u = userRepo.save(user);
+        userRepo.save(user);
+
       } catch (ConstraintViolationException e) {
+
         message = "Validation failed";
-        for(ConstraintViolation v : e.getConstraintViolations()){
-          Error error = new Error(
-              v.getPropertyPath() + " " + v.getMessage()
-            );
-          errors.add(error);
-        }
+
+        errors = getAllErrors(e);
       }
       
       Response<User> res = new Response<User>(u);
       res.setMessage(message);
       res.setErrors(errors);
       return res;
+    }
+
+    protected static ArrayList<Error> getAllErrors(ConstraintViolationException e) {
+      ArrayList<Error> errors = new ArrayList<Error>();
+      //Build up errors object with all validation info
+      for(ConstraintViolation v : e.getConstraintViolations()) {
+        Error error = new Error(
+            v.getPropertyPath() + " " + v.getMessage()
+          );
+        errors.add(error);
+      }
+
+      return errors;
+
     }
 }

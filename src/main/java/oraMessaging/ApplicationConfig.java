@@ -16,8 +16,10 @@ import oramessaging.security.JWTLoginFilter;
 public class ApplicationConfig extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-    http.csrf().disable().authorizeRequests()
+    http.csrf().disable()
+        .authorizeRequests()
         .antMatchers("/").permitAll()
+        // Allow anyone to authenticate.
         .antMatchers(HttpMethod.POST, "/auth/login").permitAll()
         .anyRequest().authenticated()
         .and().httpBasic().and()
