@@ -17,6 +17,10 @@ nothing running on port 8080.
 3. Run `gradle bootRun`
 4. localhost:8080 will be listening for requests
 
+I set up a user created on application start for testing. 
+U: samuel
+P: thelastpasswordyouwouldguess
+
 You're good to go!
 
 Thank you for the opprotunity
