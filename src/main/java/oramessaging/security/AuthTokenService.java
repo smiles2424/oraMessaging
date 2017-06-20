@@ -11,9 +11,14 @@ import java.util.Date;
 
 import static java.util.Collections.emptyList;
 
+/**
+ * Provides JWT tokens for authentication through the HTTP Authentication header. 
+ */
+
 public class AuthTokenService {
+  // TODO move to resource file
   static final long EXPIRATIONTIME = 864_000_000; // 10 days
-  static final String SECRET = "ThisIsASecret";
+  static final String SECRET = "151B70623E2B4B9B9B4BD470C1A6331F";
   static final String TOKEN_PREFIX = "Bearer";
   static final String HEADER_STRING = "Authorization";
 

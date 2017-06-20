@@ -1,5 +1,7 @@
 package oramessaging.models;
-
+/**
+ * Bean for formatted errors
+ */
 public class Error {
   private String name;
 

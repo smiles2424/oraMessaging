@@ -5,13 +5,14 @@ import oramessaging.models.User;
 
 import javax.validation.*;
 
+/**
+ * Implementation of custom validation annotation for passwords
+ */
 public class PasswordMatchesValidator 
   implements ConstraintValidator<PasswordMatches, Object> {
 
     @Override
-    public void initialize(PasswordMatches p) {
-
-    }
+    public void initialize(PasswordMatches p) {}
     
     @Override
     public boolean isValid(Object obj, ConstraintValidatorContext context){

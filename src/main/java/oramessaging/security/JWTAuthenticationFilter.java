@@ -12,6 +12,11 @@ import java.io.IOException;
 
 import oramessaging.security.AuthTokenService;
 
+/**
+ * Run on every Authenticated endpoint to check if a user's JWT token is valid
+ * and authenticated.
+ */
+
 public class JWTAuthenticationFilter extends GenericFilterBean {
 
   @Override

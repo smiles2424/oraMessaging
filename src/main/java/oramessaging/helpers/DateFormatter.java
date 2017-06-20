@@ -5,7 +5,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
-
+/**
+ * Class to easily convert dates to required ISO8601 format
+ */
 public final class DateFormatter {
   private static TimeZone tz = TimeZone.getTimeZone("UTC");
   private static DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'");
